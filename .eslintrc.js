@@ -37,5 +37,13 @@ module.exports = {
             'error',
             'never'
         ]
-    }
+    },
+    'overrides': [
+        {
+            'files': ['*.test.js'],
+            'rules': {
+                'no-undef': 'off',
+            }
+        }
+    ]
 }
