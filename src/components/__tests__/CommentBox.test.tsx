@@ -1,9 +1,7 @@
 import { mount, ReactWrapper } from 'enzyme'
 import CommentBox from '../CommentBox'
 
-
 describe('CommentBox ', () => {
-
     let wrapped: ReactWrapper
     beforeEach(() => {
         wrapped = mount(<CommentBox />)
@@ -21,15 +19,18 @@ describe('CommentBox ', () => {
         expect(wrapped.find('button').length).toEqual(1)
     })
 
-
     describe('textarea', () => {
         beforeEach(() => {
-            wrapped.find('textarea').simulate('change', { target: { value: 'new comment' } })
+            wrapped
+                .find('textarea')
+                .simulate('change', { target: { value: 'new comment' } })
             wrapped.update()
         })
 
         it('is typable', () => {
-            expect(wrapped.find('textarea').prop('value')).toEqual('new comment')
+            expect(wrapped.find('textarea').prop('value')).toEqual(
+                'new comment'
+            )
         })
 
         it('gets emptied, when form is submitted', () => {
@@ -38,9 +39,4 @@ describe('CommentBox ', () => {
             expect(wrapped.find('textarea').prop('value')).toEqual('')
         })
     })
-
-
 })
-
-
-

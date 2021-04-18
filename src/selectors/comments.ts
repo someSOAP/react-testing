@@ -3,7 +3,7 @@ import { RootState } from '../reducers'
 
 const rootSelector = (state: RootState) => state
 
-export const commentsState = createSelector(
+export const commentsSelector = createSelector(
     rootSelector,
     (state) => state.comments
 )
