@@ -1,10 +1,14 @@
+import React from 'react'
 import { mount, ReactWrapper } from 'enzyme'
+import { withRoot } from '../Root'
 import CommentBox from '../CommentBox'
+
+const WithRootCommentBox = withRoot(CommentBox)
 
 describe('CommentBox ', () => {
     let wrapped: ReactWrapper
     beforeEach(() => {
-        wrapped = mount(<CommentBox />)
+        wrapped = mount(<WithRootCommentBox />)
     })
 
     afterEach(() => {

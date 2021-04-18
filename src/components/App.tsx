@@ -1,15 +1,14 @@
 import React, { FC } from 'react'
-import { Provider } from 'react-redux'
-import store from '../reducers'
+import Root from './Root'
 import CommentBox from './CommentBox'
 import CommentList from './CommentList'
 
 const App: FC = () => {
     return (
-        <Provider store={store}>
+        <Root>
             <CommentBox />
             <CommentList />
-        </Provider>
+        </Root>
     )
 }
 
