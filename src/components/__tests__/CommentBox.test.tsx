@@ -21,10 +21,26 @@ describe('CommentBox ', () => {
         expect(wrapped.find('button').length).toEqual(1)
     })
 
-    it('has a typable textarea', () => {
-        wrapped.find('textarea').simulate('change', { target: { value: 'new comment' } })
-        wrapped.update()
-        expect(wrapped.find('textarea').prop('value')).toEqual('new comment')
+
+    describe('textarea', () => {
+        beforeEach(() => {
+            wrapped.find('textarea').simulate('change', { target: { value: 'new comment' } })
+            wrapped.update()
+        })
+
+        it('is typable', () => {
+            expect(wrapped.find('textarea').prop('value')).toEqual('new comment')
+        })
+
+        it('gets emptied, when form is submitted', () => {
+            wrapped.find('form').simulate('submit')
+            wrapped.update()
+            expect(wrapped.find('textarea').prop('value')).toEqual('')
+        })
     })
 
+
 })
+
+
+
