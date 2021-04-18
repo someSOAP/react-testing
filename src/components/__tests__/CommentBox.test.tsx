@@ -1,11 +1,10 @@
-import React from 'react'
-import { mount } from 'enzyme'
+import { mount, ReactWrapper } from 'enzyme'
 import CommentBox from '../CommentBox'
 
 
 describe('CommentBox ', () => {
 
-    let wrapped
+    let wrapped: ReactWrapper
     beforeEach(() => {
         wrapped = mount(<CommentBox />)
     })

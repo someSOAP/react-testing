@@ -5,8 +5,8 @@ import CommentList from './CommentList'
 const App: FC = () => {
     return (
         <>
-            <CommentBox/>
-            <CommentList/>
+            <CommentBox />
+            <CommentList />
         </>
     )
 }

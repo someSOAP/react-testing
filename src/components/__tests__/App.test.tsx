@@ -1,13 +1,11 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { ShallowWrapper, shallow } from 'enzyme'
 import App from '../App'
 import CommentBox from '../CommentBox'
 import CommentList from '../CommentList'
 
-
 describe('App component ', () => {
-
-    let wrapped
+    let wrapped: ShallowWrapper
     beforeEach(() => {
         wrapped = shallow(<App />)
     })
