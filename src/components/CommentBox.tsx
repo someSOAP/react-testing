@@ -1,6 +1,11 @@
 import React, { useState, FC, FormEvent, ChangeEvent } from 'react'
+import { useDispatch } from 'react-redux'
+import { AppDispatch } from '../reducers'
+import { addComment } from '../reducers/comments'
 
 const CommentBox: FC = () => {
+    const dispatch = useDispatch<AppDispatch>()
+
     const [value, updateValue] = useState<string>('')
 
     const handleChange = (event: ChangeEvent<HTMLTextAreaElement>): void => {
@@ -9,8 +14,7 @@ const CommentBox: FC = () => {
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
         event.preventDefault()
-
-        //TODO - add submit event
+        dispatch(addComment(value))
         updateValue('')
     }
 
