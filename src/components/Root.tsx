@@ -1,16 +1,27 @@
 import React, { FC, ComponentType } from 'react'
 import { Provider } from 'react-redux'
-import store from '../reducers'
+import initializeStore, { RootState } from '../reducers'
 
-const Root: FC = ({ children }) => <Provider store={store}>{children}</Provider>
+interface IRootProps {
+    initialState?: Partial<RootState>
+}
 
-export const withRoot = <T,>(Component: ComponentType<T>) =>
-    function WithRootComponent(props: T): JSX.Element {
+const Root: FC<IRootProps> = ({ children, initialState = {} }) => (
+    <Provider store={initializeStore(initialState)}>{children}</Provider>
+)
+
+export const withRoot = <T,>(
+    Component: ComponentType<T>,
+    initialState?: Partial<RootState>
+): FC<T & IRootProps> => {
+    const WithRootComponent: FC<T & IRootProps> = (props) => {
         return (
-            <Provider store={store}>
+            <Root initialState={props.initialState || initialState}>
                 <Component {...props} />
-            </Provider>
+            </Root>
         )
     }
+    return WithRootComponent
+}
 
 export default Root

@@ -1,12 +1,23 @@
-import { configureStore } from '@reduxjs/toolkit'
+import {
+    combineReducers,
+    configureStore,
+    EnhancedStore,
+} from '@reduxjs/toolkit'
 import comments from './comments'
 
-export const store = configureStore({
-    reducer: {
-        comments,
-    },
+const reducer = combineReducers({
+    comments,
 })
 
-export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
-export default store
+export type RootState = ReturnType<typeof reducer>
+
+const initializeStore = (
+    preloadedState?: Partial<RootState>
+): EnhancedStore => {
+    return configureStore({
+        reducer,
+        preloadedState,
+    })
+}
+
+export default initializeStore

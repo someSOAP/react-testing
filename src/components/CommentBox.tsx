@@ -1,10 +1,9 @@
 import React, { useState, FC, FormEvent, ChangeEvent } from 'react'
 import { useDispatch } from 'react-redux'
-import { AppDispatch } from '../reducers'
 import { addComment } from '../reducers/comments'
 
 const CommentBox: FC = () => {
-    const dispatch = useDispatch<AppDispatch>()
+    const dispatch = useDispatch()
 
     const [value, updateValue] = useState<string>('')
 
