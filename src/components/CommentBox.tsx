@@ -1,6 +1,7 @@
 import React, { useState, FC, FormEvent, ChangeEvent } from 'react'
 import { useDispatch } from 'react-redux'
 import { addComment } from '../reducers/comments'
+import { fetchComments } from '../reducers/actions'
 
 const CommentBox: FC = () => {
     const dispatch = useDispatch()
@@ -17,14 +18,21 @@ const CommentBox: FC = () => {
         updateValue('')
     }
 
+    const onFetchComments = () => {
+        dispatch(fetchComments())
+    }
+
     return (
-        <form onSubmit={handleSubmit}>
-            <h4>Add a Comment</h4>
-            <textarea value={value} onChange={handleChange} />
-            <div>
-                <button>Submit Comment</button>
-            </div>
-        </form>
+        <div>
+            <form onSubmit={handleSubmit}>
+                <h4>Add a Comment</h4>
+                <textarea value={value} onChange={handleChange} />
+                <div>
+                    <button>Submit Comment</button>
+                </div>
+            </form>
+            <button onClick={onFetchComments}>Fetch Comments</button>
+        </div>
     )
 }
 

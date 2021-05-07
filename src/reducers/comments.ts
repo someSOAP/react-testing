@@ -11,8 +11,11 @@ const commentsSlice = createSlice({
         addComment(state, { payload }: PayloadAction<string>) {
             return [...state, payload]
         },
+        saveComments(state, { payload }: PayloadAction<string[]>) {
+            return [...state, ...payload]
+        },
     },
 })
 // now available:
-export const { addComment } = commentsSlice.actions
+export const { addComment, saveComments } = commentsSlice.actions
 export default commentsSlice.reducer

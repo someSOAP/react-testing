@@ -1,3 +1,7 @@
+# React Testing Libraries Playground
+
+This project is for practicing react testing libraries, such as enzyme, jest and etc...
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

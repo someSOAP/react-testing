@@ -2,7 +2,9 @@ import {
     combineReducers,
     configureStore,
     EnhancedStore,
+    getDefaultMiddleware,
 } from '@reduxjs/toolkit'
+import reduxPromise from 'redux-promise'
 import comments from './comments'
 
 const reducer = combineReducers({
@@ -17,6 +19,7 @@ const initializeStore = (
     return configureStore({
         reducer,
         preloadedState,
+        middleware: [...getDefaultMiddleware(), reduxPromise],
     })
 }
 
