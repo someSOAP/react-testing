@@ -1,5 +1,6 @@
 import React, { FC, ComponentType } from 'react'
 import { Provider } from 'react-redux'
+import { BrowserRouter } from 'react-router-dom'
 import initializeStore, { RootState } from '../reducers'
 
 interface IRootProps {
@@ -7,7 +8,9 @@ interface IRootProps {
 }
 
 const Root: FC<IRootProps> = ({ children, initialState = {} }) => (
-    <Provider store={initializeStore(initialState)}>{children}</Provider>
+    <Provider store={initializeStore(initialState)}>
+        <BrowserRouter>{children}</BrowserRouter>
+    </Provider>
 )
 
 export const withRoot = <T,>(

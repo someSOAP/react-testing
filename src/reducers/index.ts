@@ -3,10 +3,13 @@ import {
     configureStore,
     EnhancedStore,
 } from '@reduxjs/toolkit'
+
 import comments from './comments'
+import auth from './auth'
 
 const reducer = combineReducers({
     comments,
+    auth,
 })
 
 export type RootState = ReturnType<typeof reducer>
