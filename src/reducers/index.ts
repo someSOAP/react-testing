@@ -2,7 +2,9 @@ import {
     combineReducers,
     configureStore,
     EnhancedStore,
+    getDefaultMiddleware,
 } from '@reduxjs/toolkit'
+import asyncMiddleware from './middlewares/async'
 
 import comments from './comments'
 import auth from './auth'
@@ -20,6 +22,7 @@ const initializeStore = (
     return configureStore({
         reducer,
         preloadedState,
+        middleware: [...getDefaultMiddleware(), asyncMiddleware],
     })
 }
 
